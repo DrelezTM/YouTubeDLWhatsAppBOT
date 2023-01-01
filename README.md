@@ -56,17 +56,17 @@
   npm start
   ```
 * Scan QR
-  <img alt="@youtubedlwhatsappbot" src="https://media.discordapp.net/attachments/858321432178196490/1023202756049240145/ss2.png?width=1440&height=566">
+  <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058920941121454110/qrcode.png">
 
 * Ready
-  <img alt="@youtubedlwhatsappbot" src="https://media.discordapp.net/attachments/858321432178196490/1023202755709517834/ss1.png?width=1440&height=241">
+  <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058921010868523109/console.png">
  
  ## How to Use 🔭
- * Send Image to Sticker
-   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1023197425587994714/IMG_20220924_184044.jpg">
+ * Download YouTube Audio/MP3
+   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058921459650662520/20230101_083447.png">
   
- * Send Sticker to Image
-   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1023197425332133989/IMG_20220924_184103.jpg">
+ * Download YouTube Video/MP4
+   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058921460002988043/20230101_083533.png">
 
 ## Built With 🛠
 * [WhatsApp-web.js](https://github.com/pedroslopez/whatsapp-web.js/)
