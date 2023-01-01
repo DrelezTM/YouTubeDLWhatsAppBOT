@@ -4,7 +4,7 @@
 </p>
 <div align="center">
   <h3>YouTubeDLWhatsAppBOT</h3>
-  <p>YouTube Donwloader WhatsAppBOT with <a href="https://github.com/pedroslopez/whatsapp-web.js/">whatsapp-web.js</a>, <a href="https://github.com/fent/node-ytdl-core">ytdl-core</a> and <a href="https://nodejs.org/en/">nodejs</a></p>
+  <p>YouTube Downloader WhatsAppBOT with <a href="https://github.com/pedroslopez/whatsapp-web.js/">whatsapp-web.js</a>, <a href="https://github.com/fent/node-ytdl-core">ytdl-core</a> and <a href="https://nodejs.org/en/">nodejs</a></p>
 </div>
 <div align="center">
   <a href="#warning">Warning</a> | <a href="https://dsc.gg/DrelezTM">Report Bug</a> | <a href="https://github.com/DrelezTM/YouTubeDLWhatsAppBOT/issues">Issues</a>
