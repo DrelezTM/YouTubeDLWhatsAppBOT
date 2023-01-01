@@ -1,0 +1,27 @@
+{
+  "name": "youtubedlbot",
+  "version": "1.0.0",
+  "description": "YouTubeDLBOT by DrelezTM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "keywords": [
+    "nodejs",
+    "whatsapp-web.js",
+    "ytdlbot",
+    "youtubedownloader",
+    "dreleztm"
+  ],
+  "author": "DrelezTM",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "fs": "^0.0.1-security",
+    "moment-timezone": "^0.5.37",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "https://github.com/pedroslopez/whatsapp-web.js#fix-buttons-list",
+    "ytdl-core": "^4.11.2"
+  }
+}
