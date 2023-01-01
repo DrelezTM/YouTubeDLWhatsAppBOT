@@ -10,6 +10,25 @@
   <a href="#warning">Warning</a> | <a href="https://dsc.gg/DrelezTM">Report Bug</a> | <a href="https://github.com/DrelezTM/YouTubeDLWhatsAppBOT/issues">Issues</a>
 </div>
 
+## Installation 📑
+* Clone Repository
+  ```sh
+  git clone https://github.com/DrelezTM/YouTubeDLWhatsAppBOT
+  ```
+* Install Modules
+  ```sh
+  npm install
+  ```
+* Start
+  ```sh
+  npm start
+  ```
+* Scan QR
+  <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058920941121454110/qrcode.png">
+
+* Ready
+  <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058921010868523109/console.png">
+
  ## Configuration 🗝
 * [config.json](https://github.com/DrelezTM/YouTubeDLWhatsAppBOT/blob/main/config/config.json)
   ```json
@@ -42,25 +61,7 @@
     
   ```
   You can replace ascii in https://patorjk.com/software/taag/
-## Installation 📑
-* Clone Repository
-  ```sh
-  git clone https://github.com/DrelezTM/YouTubeDLWhatsAppBOT
-  ```
-* Install Modules
-  ```sh
-  npm install
-  ```
-* Start
-  ```sh
-  npm start
-  ```
-* Scan QR
-  <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058920941121454110/qrcode.png">
 
-* Ready
-  <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058921010868523109/console.png">
- 
  ## How to Use 🔭
  * Download YouTube Audio/MP3
    <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058921459650662520/20230101_083447.png">
