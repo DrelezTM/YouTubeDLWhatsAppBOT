@@ -1,6 +1,6 @@
 # YouTubeDLWhatsAppBOT
 <p align="center">
-  <img alt="@youtubedlwhatsappbot" style="width: 150px;" src="https://cdn.discordapp.com/attachments/858321432178196490/1023200282479439933/a2cb87c97e9786637783db3b9639143a.gif">
+  <img alt="@youtubedlwhatsappbot" style="width: 150px;" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058924902524145754/a0ce3b15a352a2ded9f3a7ee2d15e6ed.gif">
 </p>
 <div align="center">
   <h3>YouTubeDLWhatsAppBOT</h3>
