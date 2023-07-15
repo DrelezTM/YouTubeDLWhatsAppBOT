@@ -5,7 +5,7 @@ const colors = require('colors');
 const fs = require('fs');
 const ytdl = require('ytdl-core');
 
-const client = new Client({
+const client = new Client({ 
     restartOnAuthFail: true,
     puppeteer: {
         headless: true,
@@ -13,7 +13,7 @@ const client = new Client({
     },
     authStrategy: new LocalAuth({ clientId: "client" })
 });
-const config = require('./config/config.json');
+const config = require('./src/config/config.json');
 
 client.on('qr', (qr) => {
     console.log(`[${moment().tz(config.timezone).format('HH:mm:ss')}] Scan the QR below : `);
@@ -22,7 +22,7 @@ client.on('qr', (qr) => {
  
 client.on('ready', () => {
     console.clear();
-    const consoleText = './config/console.txt';
+    const consoleText = './src/config/console.txt';
     fs.readFile(consoleText, 'utf-8', (err, data) => {
         if (err) {
             console.log(`[${moment().tz(config.timezone).format('HH:mm:ss')}] Console Text not found!`.yellow);
@@ -34,46 +34,32 @@ client.on('ready', () => {
     })
 });
 
-let data;
 client.on('message', async (message) => {
-    let url = message.body;
-    let chatId = message.from;
+    let url = message.body.split(' ')[1];
     let isGroups = message.from.endsWith('@g.us') ? true : false;
-    if ((isGroups && config.groups) || !isGroups) {
-        if (ytdl.validateURL(url)) {
-            let button = new Buttons(`Want to download as *Audio* or *Video* ?`,[{ id: 'mp3', body: 'Audio - MP3' }, { id: 'mp4', body: 'Video - MP4' }]);
-            data = url;
-            await client.sendMessage(chatId, button);
-        } else {
-            if (message.type == 'buttons_response') {
-                const { selectedButtonId: buttonid } = message;
-                if (buttonid == 'mp3' && !data == '') {
-                    client.sendMessage(chatId, '[⏳] Loading..');
-                    try {
-                        ytdl(data, { filter: 'audioonly', format: 'mp3', quality: 'highest' }).pipe(fs.createWriteStream(`./database/download.mp3`)).on('finish', async () => {
-                            const media = await MessageMedia.fromFilePath("./database/download.mp3");
-                            media.filename = `${config.filename.mp3}.mp3`;
-                            await client.sendMessage(chatId, media, { sendMediaAsDocument: true });
-                            client.sendMessage(chatId, '*[✅]* Successfully!');
-                        });
-                    } catch {
-                        client.sendMessage(chatId, '*[❎]* Failed!')
-                    }
-                } else if (buttonid == 'mp4' && !data == '') {
-                    client.sendMessage(chatId, '[⏳] Loading..');
-                    try {
-                        ytdl(data, { filter: 'audioandvideo', format: 'mp4', quality: 'highest' }).pipe(fs.createWriteStream(`./database/download.mp4`)).on('finish', async () => {
-                            const media = MessageMedia.fromFilePath("./database/download.mp4");
-                            media.filename = `${config.filename.mp4}.mp4`;
-                            await client.sendMessage(chatId, media, { sendMediaAsDocument: true });
-                            client.sendMessage(chatId, '*[✅]* Successfully!');
-                        });
-                    } catch {
-                        client.sendMessage(chatId, '*[❎]* Failed!');
-                    }
-                }
-            }
+
+    async function downloadYouTube(url, format, filter) {
+        client.sendMessage(message.from, '[⏳] Loading..');
+        try {
+            ytdl(url, { filter: filter, format: format, quality: 'highest' }).pipe(fs.createWriteStream(`./src/database/download.${format}`)).on('finish', async () => {
+                const media = await MessageMedia.fromFilePath(`./src/database/download.${format}`);
+                media.filename = `${config.filename.mp3}.${format}`;
+                await client.sendMessage(message.from, media, { sendMediaAsDocument: true });
+                client.sendMessage(message.from, '*[✅]* Successfully!');
+            });
+        } catch {
+            client.sendMessage(message.from, '*[❎]* Failed!')
         }
+    }
+
+    if ((isGroups && config.groups) || isGroups) return;
+    if (message.body == `${config.prefix}help`) return client.sendMessage(message.from, `*YouTubeDLBOT*\n\n[🎥] : *!video <youtube-url>*\n[🎧] : *!audio <youtube-url>*\n\n*Example :*\n!audio https://youtu.be/abcdefghij`);
+    if (url == undefined) return client.sendMessage(message.from, '*[❎]* Failed!, Please insert YouTube URL');
+    if (!ytdl.validateURL(url)) return client.sendMessage(message.from, '*[❎]* Failed!, Invalid YouTube URL');
+    if (message.body.startsWith(`${config.prefix}audio`)) {
+        downloadYouTube(url, 'mp3', 'audioonly');
+    } else if (message.body.startsWith(`${config.prefix}video`)) {
+        downloadYouTube(url, 'mp4', 'audioandvideo');
     }
 });
 
