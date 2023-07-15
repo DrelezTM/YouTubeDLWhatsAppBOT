@@ -38,6 +38,7 @@
         "mp3": "youtubedl",
         "mp4": "youtubedl"
     },
+    "prefix": "!",
     "timezone": "Asia/Jakarta",
     "groups": false
   }
@@ -45,6 +46,7 @@
   * config.name : *name for the bot* (string)
   * config.filename.mp3 : *name for mp3 files* (string)
   * config.filename.mp4 : *name for mp4 files* (string)
+  * config.prefix : *prefix for command* (string)
   * config.timezone : *timezone displays the time at the specified location* (string)
   * config.groups : *to filter whether bots can respond to group chats or not* (boolean)
 * [console.txt](https://github.com/DrelezTM/YouTubeDLWhatsAppBOT/blob/main/config/console.txt)
@@ -63,11 +65,14 @@
   You can replace ascii in https://patorjk.com/software/taag/
 
  ## How to Use 🔭
+ * Help Commands
+    <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1129738136998654012/IMG_20230715_183527.jpg">
+
  * Download YouTube Audio/MP3
-   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058921459650662520/20230101_083447.png">
+   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1129738136260464660/IMG_20230715_183441.jpg">
   
  * Download YouTube Video/MP4
-   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058921460002988043/20230101_083533.png">
+   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1129738136675696680/IMG_20230715_183459.jpg">
 
 ## Built With 🛠
 * [WhatsApp-web.js](https://github.com/pedroslopez/whatsapp-web.js/)
