@@ -53,7 +53,7 @@ client.on('message', async (message) => {
     }
 
     if ((isGroups && config.groups) || isGroups) return;
-    if (message.body == `${config.prefix}help`) return client.sendMessage(message.from, `*${config.prefix}*\n\n[🎥] : *${config.prefix}video <youtube-url>*\n[🎧] : *${config.prefix}audio <youtube-url>*\n\n*Example :*\n${config.prefix}audio https://youtu.be/abcdefghij`);
+    if (message.body == `${config.prefix}help`) return client.sendMessage(message.from, `*${config.name}*\n\n[🎥] : *${config.prefix}video <youtube-url>*\n[🎧] : *${config.prefix}audio <youtube-url>*\n\n*Example :*\n${config.prefix}audio https://youtu.be/abcdefghij`);
     if (url == undefined) return client.sendMessage(message.from, '*[❎]* Failed!, Please insert YouTube URL');
     if (!ytdl.validateURL(url)) return client.sendMessage(message.from, '*[❎]* Failed!, Invalid YouTube URL');
     if (message.body.startsWith(`${config.prefix}audio`)) {
