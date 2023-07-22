@@ -38,17 +38,71 @@ client.on('message', async (message) => {
     let url = message.body.split(' ')[1];
     let isGroups = message.from.endsWith('@g.us') ? true : false;
 
-    async function downloadYouTube(url, format, filter) {
+    async function detailYouTube(url) {
         client.sendMessage(message.from, '[⏳] Loading..');
         try {
+            let info = await ytdl.getInfo(url);
+            let data = {
+                "channel": {
+                    "name": info.videoDetails.author.name,
+                    "user": info.videoDetails.author.user,
+                    "channelUrl": info.videoDetails.author.channel_url,
+                    "userUrl": info.videoDetails.author.user_url,
+                    "verified": info.videoDetails.author.verified,
+                    "subscriber": info.videoDetails.author.subscriber_count
+                },
+                "video": {
+                    "title": info.videoDetails.title,
+                    "description": info.videoDetails.description,
+                    "lengthSeconds": info.videoDetails.lengthSeconds,
+                    "videoUrl": info.videoDetails.video_url,
+                    "publishDate": info.videoDetails.publishDate,
+                    "viewCount": info.videoDetails.viewCount
+                }
+            }
+            client.sendMessage(message.from, `*CHANNEL DETAILS*\n• Name : *${data.channel.name}*\n• User : *${data.channel.user}*\n• Verified : *${data.channel.verified}*\n• Channel : *${data.channel.channelUrl}*\n• Subscriber : *${data.channel.subscriber}*`);
+            client.sendMessage(message.from, `*VIDEO DETAILS*\n• Title : *${data.video.title}*\n• Seconds : *${data.video.lengthSeconds}*\n• VideoURL : *${data.video.videoUrl}*\n• Publish : *${data.video.publishDate}*\n• Viewers : *${data.video.viewCount}*`)
+            client.sendMessage(message.from, '*[✅]* Successfully!');
+        } catch (err) {
+            console.log(err);
+            client.sendMessage(message.from, '*[❎]* Failed!');
+        }
+    }
+
+    async function downloadYouTube(url, format, filter) {
+        client.sendMessage(message.from, '[⏳] Loading..');
+        let timeStart = Date.now();
+        try {
+            let info = await ytdl.getInfo(url);
+            let data = {
+                "channel": {
+                    "name": info.videoDetails.author.name,
+                    "user": info.videoDetails.author.user,
+                    "channelUrl": info.videoDetails.author.channel_url,
+                    "userUrl": info.videoDetails.author.user_url,
+                    "verified": info.videoDetails.author.verified,
+                    "subscriber": info.videoDetails.author.subscriber_count
+                },
+                "video": {
+                    "title": info.videoDetails.title,
+                    "description": info.videoDetails.description,
+                    "lengthSeconds": info.videoDetails.lengthSeconds,
+                    "videoUrl": info.videoDetails.video_url,
+                    "publishDate": info.videoDetails.publishDate,
+                    "viewCount": info.videoDetails.viewCount
+                }
+            }
             ytdl(url, { filter: filter, format: format, quality: 'highest' }).pipe(fs.createWriteStream(`./src/database/download.${format}`)).on('finish', async () => {
                 const media = await MessageMedia.fromFilePath(`./src/database/download.${format}`);
+                let timestamp = Date.now() - timeStart;
                 media.filename = `${config.filename.mp3}.${format}`;
                 await client.sendMessage(message.from, media, { sendMediaAsDocument: true });
+                client.sendMessage(message.from, `• Title : *${data.video.title}*\n• Channel : *${data.channel.user}*\n• View Count : *${data.video.viewCount}*\n• TimeStamp : *${timestamp}*`);
                 client.sendMessage(message.from, '*[✅]* Successfully!');
             });
-        } catch {
-            client.sendMessage(message.from, '*[❎]* Failed!')
+        } catch (err) {
+            console.log(err);
+            client.sendMessage(message.from, '*[❎]* Failed!');
         }
     }
 
@@ -60,6 +114,8 @@ client.on('message', async (message) => {
         downloadYouTube(url, 'mp3', 'audioonly');
     } else if (message.body.startsWith(`${config.prefix}video`)) {
         downloadYouTube(url, 'mp4', 'audioandvideo');
+    } else if (message.body.startsWith(`${config.prefix}detail`)) {
+        detailYouTube(url);
     }
 });
 

@@ -69,10 +69,13 @@
     <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1129738136998654012/IMG_20230715_183527.jpg">
 
  * Download YouTube Audio/MP3
-   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1129738136260464660/IMG_20230715_183441.jpg">
+   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1132245859438968852/IMG_20230722_164038.jpg">
   
  * Download YouTube Video/MP4
-   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1129738136675696680/IMG_20230715_183459.jpg">
+   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1132251101027110942/IMG_20230722_164602.jpg">
+
+ * Details
+   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1132251128118136892/IMG_20230722_170108.jpg">
 
 ## Built With 🛠
 * [WhatsApp-web.js](https://github.com/pedroslopez/whatsapp-web.js/)
