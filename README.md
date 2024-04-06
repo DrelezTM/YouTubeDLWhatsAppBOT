@@ -1,6 +1,6 @@
 # YouTubeDLWhatsAppBOT
 <p align="center">
-  <img alt="@youtubedlwhatsappbot" style="width: 150px;" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058924902524145754/a0ce3b15a352a2ded9f3a7ee2d15e6ed.gif">
+  <img alt="@youtubedlwhatsappbot" style="width: 150px;" src="https://github.com/DrelezTM/StickerWhatsAppBOT/assets/72683265/76a3611e-ae4b-4c9a-b44a-7863f4080072">
 </p>
 <div align="center">
   <h3>YouTubeDLWhatsAppBOT</h3>
@@ -24,10 +24,10 @@
   npm start
   ```
 * Scan QR
-  <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058920941121454110/qrcode.png">
+  <img alt="@youtubedlwhatsappbot" src="https://github.com/DrelezTM/StickerWhatsAppBOT/assets/72683265/2ce59cf0-f26b-4cd0-be1a-12f985720ad9">
 
 * Ready
-  <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/1033742442094149752/1058921010868523109/console.png">
+  <img alt="@youtubedlwhatsappbot" src="https://github.com/DrelezTM/YouTubeDLWhatsAppBOT/assets/72683265/f76ad53a-3f89-44df-a085-6122d34457e3">
 
  ## Configuration 🗝
 * [config.json](https://github.com/DrelezTM/YouTubeDLWhatsAppBOT/blob/main/config/config.json)
@@ -66,16 +66,16 @@
 
  ## How to Use 🔭
  * Help Commands
-    <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1129738136998654012/IMG_20230715_183527.jpg">
+    <img alt="@youtubedlwhatsappbot" src="https://github.com/DrelezTM/YouTubeDLWhatsAppBOT/assets/72683265/fbc95d89-277d-4f6d-b008-e154960ebd12">
 
  * Download YouTube Audio/MP3
-   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1132245859438968852/IMG_20230722_164038.jpg">
+   <img alt="@youtubedlwhatsappbot" src="https://github.com/DrelezTM/YouTubeDLWhatsAppBOT/assets/72683265/3f64562b-57ea-4105-9c5d-c67d6ee789d3">
   
  * Download YouTube Video/MP4
-   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1132251101027110942/IMG_20230722_164602.jpg">
+   <img alt="@youtubedlwhatsappbot" src="https://github.com/DrelezTM/YouTubeDLWhatsAppBOT/assets/72683265/b89eb043-065c-48d7-840c-2d81ffff573c">
 
  * Details
-   <img alt="@youtubedlwhatsappbot" src="https://cdn.discordapp.com/attachments/858321432178196490/1132251128118136892/IMG_20230722_170108.jpg">
+   <img alt="@youtubedlwhatsappbot" src="https://github.com/DrelezTM/YouTubeDLWhatsAppBOT/assets/72683265/23162157-d1be-4123-9cfc-c75204bd86aa">
 
 ## Built With 🛠
 * [WhatsApp-web.js](https://github.com/pedroslopez/whatsapp-web.js/)
