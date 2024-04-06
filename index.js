@@ -11,6 +11,10 @@ const client = new Client({
         headless: true,
         args: [ '--no-sandbox', '--disable-setuid-sandbox' ]
     },
+    webVersionCache: {
+        type: 'remote',
+        remotePath: `https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2407.3.html`,
+    },
     authStrategy: new LocalAuth({ clientId: "client" })
 });
 const config = require('./src/config/config.json');
@@ -41,28 +45,29 @@ client.on('message', async (message) => {
     async function detailYouTube(url) {
         client.sendMessage(message.from, '[⏳] Loading..');
         try {
-            let info = await ytdl.getInfo(url);
-            let data = {
-                "channel": {
-                    "name": info.videoDetails.author.name,
-                    "user": info.videoDetails.author.user,
-                    "channelUrl": info.videoDetails.author.channel_url,
-                    "userUrl": info.videoDetails.author.user_url,
-                    "verified": info.videoDetails.author.verified,
-                    "subscriber": info.videoDetails.author.subscriber_count
-                },
-                "video": {
-                    "title": info.videoDetails.title,
-                    "description": info.videoDetails.description,
-                    "lengthSeconds": info.videoDetails.lengthSeconds,
-                    "videoUrl": info.videoDetails.video_url,
-                    "publishDate": info.videoDetails.publishDate,
-                    "viewCount": info.videoDetails.viewCount
+            ytdl.getInfo(url).then((info) => {
+                let data = {
+                    "channel": {
+                        "name": info.videoDetails.author.name,
+                        "user": info.videoDetails.author.user,
+                        "channelUrl": info.videoDetails.author.channel_url,
+                        "userUrl": info.videoDetails.author.user_url,
+                        "verified": info.videoDetails.author.verified,
+                        "subscriber": info.videoDetails.author.subscriber_count
+                    },
+                    "video": {
+                        "title": info.videoDetails.title,
+                        "description": info.videoDetails.description,
+                        "lengthSeconds": info.videoDetails.lengthSeconds,
+                        "videoUrl": info.videoDetails.video_url,
+                        "publishDate": info.videoDetails.publishDate,
+                        "viewCount": info.videoDetails.viewCount
+                    }
                 }
-            }
-            client.sendMessage(message.from, `*CHANNEL DETAILS*\n• Name : *${data.channel.name}*\n• User : *${data.channel.user}*\n• Verified : *${data.channel.verified}*\n• Channel : *${data.channel.channelUrl}*\n• Subscriber : *${data.channel.subscriber}*`);
-            client.sendMessage(message.from, `*VIDEO DETAILS*\n• Title : *${data.video.title}*\n• Seconds : *${data.video.lengthSeconds}*\n• VideoURL : *${data.video.videoUrl}*\n• Publish : *${data.video.publishDate}*\n• Viewers : *${data.video.viewCount}*`)
-            client.sendMessage(message.from, '*[✅]* Successfully!');
+                client.sendMessage(message.from, `*CHANNEL DETAILS*\n• Name : *${data.channel.name}*\n• User : *${data.channel.user}*\n• Verified : *${data.channel.verified}*\n• Channel : *${data.channel.channelUrl}*\n• Subscriber : *${data.channel.subscriber}*`);
+                client.sendMessage(message.from, `*VIDEO DETAILS*\n• Title : *${data.video.title}*\n• Seconds : *${data.video.lengthSeconds}*\n• VideoURL : *${data.video.videoUrl}*\n• Publish : *${data.video.publishDate}*\n• Viewers : *${data.video.viewCount}*`)
+                client.sendMessage(message.from, '*[✅]* Successfully!');
+            });
         } catch (err) {
             console.log(err);
             client.sendMessage(message.from, '*[❎]* Failed!');
@@ -97,7 +102,7 @@ client.on('message', async (message) => {
                 let timestamp = Date.now() - timeStart;
                 media.filename = `${config.filename.mp3}.${format}`;
                 await client.sendMessage(message.from, media, { sendMediaAsDocument: true });
-                client.sendMessage(message.from, `• Title : *${data.video.title}*\n• Channel : *${data.channel.user}*\n• View Count : *${data.video.viewCount}*\n• TimeStamp : *${timestamp}*`);
+                client.sendMessage(message.from, `• Title : *${data.video.title}*\n• Channel : *${data.channel.user}*\n• View Count : *${data.video.viewCount}*\n• TimeStamp : *${timestamp / 1000} seconds*`);
                 client.sendMessage(message.from, '*[✅]* Successfully!');
             });
         } catch (err) {
@@ -108,8 +113,8 @@ client.on('message', async (message) => {
 
     if ((isGroups && config.groups) || isGroups) return;
     if (message.body == `${config.prefix}help`) return client.sendMessage(message.from, `*${config.name}*\n\n[🎥] : *${config.prefix}video <youtube-url>*\n[🎧] : *${config.prefix}audio <youtube-url>*\n\n*Example :*\n${config.prefix}audio https://youtu.be/abcdefghij`);
-    if (url == undefined) return client.sendMessage(message.from, '*[❎]* Failed!, Please insert YouTube URL');
-    if (!ytdl.validateURL(url)) return client.sendMessage(message.from, '*[❎]* Failed!, Invalid YouTube URL');
+    if (url == undefined) return;
+    if ((message.body.startsWith(`${config.prefix}audio`) || message.body.startsWith(`${config.prefix}video`) || message.body.startsWith(`${config.prefix}detail`)) && !ytdl.validateURL(url)) return client.sendMessage(message.from, '*[❎]* Failed!, Invalid YouTube URL');
     if (message.body.startsWith(`${config.prefix}audio`)) {
         downloadYouTube(url, 'mp3', 'audioonly');
     } else if (message.body.startsWith(`${config.prefix}video`)) {
