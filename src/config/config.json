@@ -1,10 +1,10 @@
 {
-    "name": "YouTubeDLBOT",
-    "filename": {
-        "mp3": "youtubedl",
-        "mp4": "youtubedl"
-    },
-    "prefix": "!",
-    "timezone": "Asia/Jakarta",
-    "groups": false
+	"name": "YouTubeDLBOT",
+	"filename": {
+		"mp3": "youtubedl",
+		"mp4": "youtubedl"
+	},
+	"prefix": "/",
+	"timezone": "Asia/Jakarta",
+	"groups": true
 }
