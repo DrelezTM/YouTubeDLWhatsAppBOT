@@ -35,16 +35,12 @@ client.on('message', async (message) => {
 		client.sendMessage(message.from, '[⏳] Loading..');
 		try {
 			let info = await ytdl.getInfo(url);
-			ytdl(url, { filter: filter, format: format, quality: 'highest' }).pipe(fs.createWriteStream(`./src/database/download.${format}`)).on('finish', async () => {
-				let media = await MessageMedia.fromFilePath(`./src/database/download.${format}`);
-				media.filename = `${config.filename.mp3}.${format}`;
-				if (filter == 'audioonly') {
-					await client.sendMessage(message.from, media, { sendMediaAsDocument: true });
-					client.sendMessage(message.from, info.videoDetails.title);
-					return
-				}
-				await client.sendMessage(message.from, media, { caption: info.videoDetails.title }, { sendMediaAsDocument: false });
-
+			let title = info.videoDetails.title
+			ytdl(url, { filter: filter, format: format, quality: 'highest' }).pipe(fs.createWriteStream(`./src/database/${title}.${format}`)).on('finish', async () => {
+				let media = await MessageMedia.fromFilePath(`./src/database/${title}.${format}`);
+				media.filename = `${title}.${format}`;
+				await client.sendMessage(message.from, media, { sendMediaAsDocument: true });
+				client.searchMessages(message.from, info.videoDetails.title)
 			});
 		} catch (err) {
 			console.log(err);
