@@ -1,27 +1,25 @@
 {
-  "name": "youtubedlbot",
-  "version": "1.0.0",
-  "description": "YouTubeDLBOT by DrelezTM",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ."
-  },
-  "keywords": [
-    "nodejs",
-    "whatsapp-web.js",
-    "ytdlbot",
-    "youtubedownloader",
-    "dreleztm"
-  ],
-  "author": "DrelezTM",
-  "license": "MIT",
-  "dependencies": {
-    "colors": "^1.4.0",
-    "fs": "^0.0.1-security",
-    "moment-timezone": "^0.5.43",
-    "qrcode-terminal": "^0.12.0",
-    "whatsapp-web.js": "^1.23.1-alpha.5",
-    "ytdl-core": "^4.11.5"
-  }
+	"name": "youtubedlbot",
+	"version": "1.0.0",
+	"description": "YouTubeDLBOT by DrelezTM",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node ."
+	},
+	"keywords": [
+		"nodejs",
+		"whatsapp-web.js",
+		"ytdlbot",
+		"youtubedownloader",
+		"dreleztm"
+	],
+	"author": "DrelezTM",
+	"license": "MIT",
+	"dependencies": {
+		"fs": "^0.0.1-security",
+		"qrcode-terminal": "^0.12.0",
+		"whatsapp-web.js": "^1.23.1-alpha.5",
+		"ytdl-core": "^4.11.5"
+	}
 }
