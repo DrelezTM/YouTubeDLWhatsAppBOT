@@ -6,5 +6,6 @@
 	},
 	"prefix": "/",
 	"timezone": "Asia/Jakarta",
-	"groups": true
+	"groups": true,
+	"executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
 }
