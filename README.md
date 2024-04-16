@@ -15,6 +15,23 @@
   ```sh
   git clone https://github.com/DrelezTM/YouTubeDLWhatsAppBOT
   ```
+* If Chromium already installed on your machine
+  ```sh
+  export PUPPETEER_SKIP_DOWNLOAD=true
+  export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+  ```
+* add `exexecutablePath` on `client.puppeteer`
+  ```js
+  const client = new Client({
+		...
+		puppeteer: {
+			...
+			executablePath: "path/to/chromium.ext",
+			...
+		},
+		...
+	});
+  ```
 * Install Modules
   ```sh
   npm install
