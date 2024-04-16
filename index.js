@@ -8,8 +8,8 @@ const client = new Client({
 	restartOnAuthFail: true,
 	puppeteer: {
 		headless: true,
+		args: ['--no-sandbox', '--disable-setuid-sandbox'],
 		executablePath: `${config.executablePath}`,
-		args: ['--no-sandbox', '--disable-setuid-sandbox']
 	},
 	webVersionCache: {
 		type: 'remote',
@@ -35,16 +35,16 @@ client.on('message', async (message) => {
 		client.sendMessage(message.from, '[⏳] Loading..');
 		try {
 			let info = await ytdl.getInfo(url);
-			let data = {
-				"video": {
-					"title": info.videoDetails.title,
-				}
-			}
 			ytdl(url, { filter: filter, format: format, quality: 'highest' }).pipe(fs.createWriteStream(`./src/database/download.${format}`)).on('finish', async () => {
-				const media = await MessageMedia.fromFilePath(`./src/database/download.${format}`);
+				let media = await MessageMedia.fromFilePath(`./src/database/download.${format}`);
 				media.filename = `${config.filename.mp3}.${format}`;
-				await client.sendMessage(message.from, media, { sendMediaAsDocument: false });
-				client.sendMessage(message.from, `• Title : *${data.video.title}*`);
+				if (filter == 'audioonly') {
+					await client.sendMessage(message.from, media, { sendMediaAsDocument: true });
+					client.sendMessage(message.from, info.videoDetails.title);
+					return
+				}
+				await client.sendMessage(message.from, media, { caption: info.videoDetails.title }, { sendMediaAsDocument: false });
+
 			});
 		} catch (err) {
 			console.log(err);
