@@ -2,12 +2,13 @@ const { Client, LocalAuth, Buttons, MessageMedia } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 const fs = require('fs');
 const ytdl = require('ytdl-core');
+const config = require('./src/config/config.json');
 
 const client = new Client({
 	restartOnAuthFail: true,
 	puppeteer: {
 		headless: true,
-		executablePath: "C:/Users/david/AppData/Local/ms-playwright/chromium-1105/chrome-win/chrome.exe",
+		executablePath: `${config.executablePath}`,
 		args: ['--no-sandbox', '--disable-setuid-sandbox']
 	},
 	webVersionCache: {
@@ -16,7 +17,6 @@ const client = new Client({
 	},
 	authStrategy: new LocalAuth({ clientId: "client" })
 });
-const config = require('./src/config/config.json');
 
 client.on('qr', (qr) => {
 	console.log(`[🤳] Scan the QR below : `);
