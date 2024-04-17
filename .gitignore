@@ -9,6 +9,9 @@ lerna-debug.log*
 # wwebjs_auth
 .wwebjs_auth
 
+# test.js
+test.js
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
