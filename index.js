@@ -28,8 +28,8 @@ client.on('ready', () => {
 });
 
 client.on('message', async (message) => {
-	let url = message.body.split(' ')[1];
-
+	let tempUrl = message.body.split(' ')[1];
+	let url = tempUrl ? tempUrl : message.body
 
 	async function downloadYouTube(url, format, filter) {
 		client.sendMessage(message.from, '[⏳] Loading..');
@@ -45,15 +45,16 @@ client.on('message', async (message) => {
 		} catch (err) {
 			console.log(err);
 			client.sendMessage(message.from, '*[❎]* Failed!');
+			throw err
 		}
 	}
 
 	if (message.body == `${config.prefix}help`) return client.sendMessage(message.from, `*${config.name}*\n\n[🎥] : *${config.prefix}video <youtube-url>*\n[🎧] : *${config.prefix}audio <youtube-url>*\n\n*Example :*\n${config.prefix}audio https://youtu.be/abcdefghij`);
 	if (url == undefined) return;
-	if ((message.body.startsWith(`${config.prefix}audio`) || message.body.startsWith(`${config.prefix}video`)) && !ytdl.validateURL(url)) return client.sendMessage(message.from, '*[❎]* Failed!, Invalid YouTube URL');
+	if (!ytdl.validateURL(url)) return client.sendMessage(message.from, '*[❎]* Failed!, Invalid YouTube URL');
 	if (message.body.startsWith(`${config.prefix}audio`)) {
 		downloadYouTube(url, 'mp3', 'audioonly');
-	} else if (message.body.startsWith(`${config.prefix}video`)) {
+	} else {
 		downloadYouTube(url, 'mp4', 'audioandvideo');
 	}
 });
